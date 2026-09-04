@@ -1,0 +1,90 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/mmm10138/Machine-Learning-/blob/main/Newton's_Method\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "## Newton's method"
+      ],
+      "metadata": {
+        "id": "T0hgdxAA7wKB"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "# Newton's method to compute square root of 2\n",
+        "def newtons_method_sqrt2(x0, tol=1e-8, max_iter=100):\n",
+        "    # Function f(x) = x^2 - 2\n",
+        "    f = lambda x: x**2 - 2\n",
+        "    # Derivative f'(x) = 2x\n",
+        "    f_prime = lambda x: 2*x\n",
+        "\n",
+        "    x = x0\n",
+        "    for i in range(max_iter):\n",
+        "        # Newton's update formula: x_{n+1} = x_n - f(x_n) / f'(x_n)\n",
+        "        x_new=x-f(x)/f_prime(x)\n",
+        "\n",
+        "        # Check if the difference is within tolerance\n",
+        "        if abs(x_new - x) < tol:\n",
+        "            print(f\"Converged after {i+1} iterations.\")\n",
+        "            return x_new\n",
+        "\n",
+        "        # Update x\n",
+        "        x=x_new\n",
+        "\n",
+        "    print(\"Did not converge within the maximum number of iterations.\")\n",
+        "    return x\n",
+        "\n",
+        "# Starting point\n",
+        "x0 = 1.5\n",
+        "result = newtons_method_sqrt2(x0)\n",
+        "print(f\"Approximation of square root of 2: {result}\")\n",
+        "print(f\"Python's value: {2**0.5}\")"
+      ],
+      "metadata": {
+        "id": "9prPB7OLbr8s",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "outputId": "242d57bc-69f7-42f7-c719-2aa870d9f8d2"
+      },
+      "execution_count": 1,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Converged after 4 iterations.\n",
+            "Approximation of square root of 2: 1.4142135623730951\n",
+            "Python's value: 1.4142135623730951\n"
+          ]
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "language_info": {
+      "name": "python"
+    },
+    "colab": {
+      "provenance": [],
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 0
+}
